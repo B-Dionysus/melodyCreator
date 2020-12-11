@@ -2,7 +2,8 @@
 function seedCorpora(){
 	$GLOBALS['adjArray']=array();
 	$GLOBALS['nounArray']=array();
-	$dir = "../characterDescriptions/corpora/wordLemPoS";
+	// $dir = "../characterDescriptions/corpora/wordLemPoS";
+	$dir = "./corpora/wordLemPoS";
 	$adj=0;
 	$noun=0;
 	$a = scandir($dir);
