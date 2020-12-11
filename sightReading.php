@@ -1,5 +1,3 @@
-<meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
-<meta http-equiv="pragma" content="no-cache" />
 
 <?PHP
 include "./writeSightReading.php";
@@ -27,8 +25,8 @@ include "./writeSightReading.php";
       ///////////////////////////
       var vrvToolkit1 = new verovio.toolkit();
       var zoom = 50;
-      var pageHeight = 512* 100 / zoom ;;
-      var pageWidth = 384* 100 / zoom ;;
+      var pageHeight = 512* 100 / zoom ;
+      var pageWidth = 384* 100 / zoom ;
       
       ///////////////////////////////////////////////////
       /* A function for setting options to the toolkit */
@@ -37,8 +35,11 @@ include "./writeSightReading.php";
           //////////////////////////////////////////////////////////////
           /* Adjust the height and width according to the window size */
           //////////////////////////////////////////////////////////////
-          pageHeight = $(document).height() * 100 / zoom ;
-          pageWidth = ($(window).width()-50) * 100 / zoom ;
+          
+      var pageHeight = 512* 100 / zoom ;;
+      var pageWidth = 384* 100 / zoom ;;
+          // pageHeight = $(document).height() * 100 / zoom ;
+          // pageWidth = ($(window).width()-50) * 100 / zoom ;
           options = {
                       pageHeight: pageHeight,
                       pageWidth: pageWidth,
