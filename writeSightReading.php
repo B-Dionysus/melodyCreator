@@ -1,21 +1,17 @@
 <?PHP
-include "./musicClasses.dev.1b.php";
-include "./randomTitle.dev.1b.php";
+include "./musicClasses.php";
+include "./randomTitle.php";
 ?>
       <?php
   
-  print "64 <hr />";
-  
-
-  
-  
+  print "<hr />";
   
 function fillDurations($budget,$array, $key){
 
-  if(!$wholeNotePercentage=$_REQUEST['wn']) $wholeNotePercentage=17;
-  if(!$halfNotePercentage=$_REQUEST['hn']) $halfNotePercentage=25;
-  if(!$quarterNotePercentage=$_REQUEST['qn']) $quarterNotePercentage=82;
-  if(!$eighthNotePercentage=$_REQUEST['en']) $eighthNotePercentage=50;
+  if(isset($_REQUEST['wn'])) $wholeNotePercentage=$_REQUEST['wn']; else $wholeNotePercentage=17;
+  if(isset($_REQUEST['hn'])) $halfNotePercentage=$_REQUEST['hn']; else $halfNotePercentage=25;
+  if(isset($_REQUEST['qn'])) $quarterNotePercentage=$_REQUEST['qn']; else $quarterNotePercentage=82;
+  if(isset($_REQUEST['en'])) $eighthNotePercentage=$_REQUEST['en']; else $eighthNotePercentage=50;
 
 
   $eighthNote=1;
@@ -56,12 +52,12 @@ function fillDurations($budget,$array, $key){
 
 
 function chooseNotePitch($n, $clust){ 
-    if(!$secondWeight=$_REQUEST['second']) $secondWeight=18;
-    if(!$thirdWeight=$_REQUEST['third']) $thirdWeight=59;
-    if(!$fourthWeight=$_REQUEST['fourth']) $fourthWeight=39;
-    if(!$fifthWeight=$_REQUEST['fifth']) $fifthWeight=25;
-    if(!$repeatWeight=$_REQUEST['repeat']) $repeatWeight=10;
-    if(!$octaveWeight=$_REQUEST['octave']) $octaveWeight=8;
+    if(isset($_REQUEST['second'])) $secondWeight=$_REQUEST['second']; else $secondWeight=18;
+    if(isset($_REQUEST['third']))$thirdWeight=$_REQUEST['third']; else $thirdWeight=59;
+    if(isset($_REQUEST['fourth']))$fourthWeight=$_REQUEST['fourth']; else $fourthWeight=39;
+    if(isset($_REQUEST['fifth'])) $fifthWeight=$_REQUEST['fifth']; else $fifthWeight=25;
+    if(isset($_REQUEST['repeat']))$repeatWeight=$_REQUEST['repeat']; else $repeatWeight=10;
+    if(isset($_REQUEST['octave']))$octaveWeight=$_REQUEST['octave']; else $octaveWeight=8;
     
     $deltaZones=array();
     
@@ -141,7 +137,7 @@ function chooseKey($tonic){
 }
 
 function writeTheFile($name){
-  $debug=true;
+  $debug=false;
   if(!$debug) $myfile = fopen($name, "w") or die("Unable to open ".$name);
 
  // 0 through 11, right? 
@@ -152,7 +148,7 @@ function writeTheFile($name){
 //$GLOBALS['title']="This is test #".rand(111,666);
   
   $measures=8;
-  if(!$GLOBALS['count']=$_REQUEST['count']) $GLOBALS['count']=3+rand(0,1);    // The time signature will either be 3/4 or 4/4
+  if(isset($_REQUEST['count'])) $GLOBALS['count']=$_REQUEST['count']; else $GLOBALS['count']=3+rand(0,1);    // The time signature will either be 3/4 or 4/4
   
   $currentNote=$theKey->getTonic();  
   $melody="";  
@@ -253,7 +249,7 @@ function writeTheFile($name){
                           <measure n="10" ><staff n="1"><layer n="1"><mRest cutout="cutout"></mRest></layer></staff></measure>
                           <measure n="10" ><staff n="1"><layer n="1"><mRest cutout="cutout"></mRest></layer></staff></measure>
                           <measure n="10" ><staff n="1"><layer n="1"><mRest cutout="cutout"></mRest></layer></staff></measure>
-                          <measure n="10" ><staff n="1"><layer n="1"><note pname="d" oct="4" dur="32"  stem.dir="up"></note></layer></staff></measure>
+                          </layer></staff></measure>
                       </section>
                   </score>
               </mdiv>
@@ -272,6 +268,7 @@ function writeTheFile($name){
 
 writeTheFile("./sightRead.mei");
 
+      chmod("./sightRead.mei", 0766);
 ?> 
 
 
