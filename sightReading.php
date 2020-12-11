@@ -96,7 +96,7 @@ include "./writeSightReading.php";
     <script type="text/javascript">
         
         var midiUpdate = function(time) {
-            console.log(time);
+           // console.log(time);
         }
         var midiStop = function() {
             console.log("Stop");
