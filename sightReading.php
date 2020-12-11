@@ -36,8 +36,8 @@ include "./writeSightReading.php";
           /* Adjust the height and width according to the window size */
           //////////////////////////////////////////////////////////////
           
-          pageHeight = 512* 100 / zoom ;
-          pageWidth = 1024* 100 / zoom ;
+          // pageHeight = 512* 100 / zoom ;
+          // pageWidth = 1024* 100 / zoom ;
           pageHeight = $(window).height() * 100 / zoom ;
           pageWidth = ($(window).width()-50) * 100 / zoom ;
           options = {
